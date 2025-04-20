@@ -18,14 +18,14 @@
     <main>
         <nav id="page-nav" class="page-nav" data-state="open">
             <ul class="nav-list">
-                <li><a href="#abstract-factory" onclick="closeMenuOnSmallScreen()">Абстрактна фабрика</a></li>
-                <li><a href="#builder" onclick="closeMenuOnSmallScreen()">Строител</a></li>
-                <li><a href="#factory-method" onclick="closeMenuOnSmallScreen()">Метод фабрика</a></li>
-                <li><a href="#pool" onclick="closeMenuOnSmallScreen()">Пул</a></li>
-                <li><a href="#prototype" onclick="closeMenuOnSmallScreen()">Прототип</a></li>
-                <li><a href="#simple-factory" onclick="closeMenuOnSmallScreen()">Опростена фабрика</a></li>
-                <li><a href="#singleton" onclick="closeMenuOnSmallScreen()">Сингълтън(Сек)</a></li>
-                <li><a href="#static-factory" onclick="closeMenuOnSmallScreen()">Статична фабрика</a></li>
+                <li><a href="#abstract-factory-pattern">Абстрактна фабрика</a></li>
+                <li><a href="#builder-pattern">Строител</a></li>
+                <li><a href="#factory-method-pattern">Метод фабрика</a></li>
+                <li><a href="#pool-pattern">Пул</a></li>
+                <li><a href="#prototype-pattern">Прототип</a></li>
+                <li><a href="#simple-factory-pattern">Опростена фабрика</a></li>
+                <li><a href="#singleton-pattern">Сингълтън(Сек)</a></li>
+                <li><a href="#static-factory-pattern">Статична фабрика</a></li>
             </ul>
         </nav>
         <div class="content-container">
@@ -470,12 +470,12 @@ class BeastCharacter implements CharacterPrototype
                 </figure>
             </article>
             <article id="simple-factory-pattern">
-                <h2> Проста фабрика </h2>
+                <h2> Опростена фабрика </h2>
                 <h3> Приложимост </h3>
                 <p>
                     <q cite="https://dev.to/zhukmax/design-patterns-in-php-8-simple-factory-o0l">
                         За със създаването на обект без излагане на логиката на създаване на клиента и препращане към
-                        новосъздадения обект с помощта на общ интерфейс. Нарича се „проста фабрика“, защото е лесен за
+                        новосъздадения обект с помощта на общ интерфейс. Нарича се „Опростена фабрика“, защото е лесен за
                         разбиране и прилагане. Основната идея зад шаблона "Опростена фабрика" е да се създават обекти,
                         без да се налага да се указва точният клас на обекта, който ще бъде създаден. Тя се различава от
                         статичната фабрика, защото не е статична. Следователно можете да имате множество фабрики,
