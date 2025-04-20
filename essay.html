@@ -53,13 +53,13 @@
                     <li>Обувки</li>
                 </ul>
                 </p>
-                <figure id="fig1">
+                <figure id="figure1">
                     <img src="images/Abstract_Factory_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Абстрактна фабрика"
                         alt="Примерна UML диаграма на Абстрактна фабрика" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 1. UML диаграма на <em>Абстрактна фабрика</em>.</figcaption>
                 </figure>
-                <figure id="fig2">
+                <figure id="figure2">
                     <img src="images/Top_Diagram.png" class="uml-image" title='Диаграма на горна част на "аутфит"'
                         alt='Примерна UML диаграма на горначаст на "аутфит"' loading="lazy" width="990" height="869">
                     <figcaption>Фигура 2. UML диаграма на Горна част на "аутфит".</figcaption>
@@ -156,7 +156,7 @@ class Sneakers implements Shoes {
                     Искаме да създадем приложение за рецепти. Имаме различни видове рецепти, които можем да създадем.
                     Всяка една рецепта е сложна комбинация от съставки и действия.
                 </p>
-                <figure id="fig3">
+                <figure id="figure3">
                     <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
                         alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 3. UML диаграма на <em>Строител</em>.</figcaption>
@@ -224,7 +224,7 @@ class Director
                     можем да създадем.
                     Например <em>имейли и SMS</em>.
                 </p>
-                <figure id="fig4">
+                <figure id="figure4">
                     <img src="images/Factory_Method_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Строител" alt="Примерна UML диаграма на Строител" loading="lazy"
                         width="990" height="869">
@@ -294,10 +294,10 @@ class SMSMessageCreator extends MessageCreator {
                     <em>MySQL</em> и <em>PostgreSQL</em> предлагат пул от връзки към базата данни, тъй като създаването
                     на тези връзки е "тежка" операция.
                 </p>
-                <figure id="fig5">
+                <figure id="figure5">
                     <img src="images/Pool_Pattern.png" class="uml-image" title="Примерна UML диаграма на Пул"
                         alt="Примерна UML диаграма на Пул" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 6. UML диаграма на <em>Пул</em>.</figcaption>
+                    <figcaption>Фигура 5. UML диаграма на <em>Пул</em>.</figcaption>
                 </figure>
                 <figure id="code4">
                     <pre><code>&lt;?php
@@ -396,11 +396,9 @@ $connectionPool->releaseConnection($connection);
                 <h2> Прототип </h2>
                 <h3> Приложимост </h3>
                 <p>
-                    <q cite="https://sourcemaking.com/design_patterns/object_pool">
-                        За създаване на нови обекти чрез клониране на съществуващи обекти вместо директно създаване чрез
-                        конструктор. Това е полезно, когато създаването на обект е скъпо или сложно. Шаблонът позволява
-                        лесно създаване на копия с различни конфигурации, като същевременно запазва производителността.
-                    </q>
+                    За създаване на нови обекти чрез клониране на съществуващи обекти вместо директно създаване чрез
+                    конструктор. Това е полезно, когато създаването на обект е скъпо или сложно. Шаблонът позволява
+                    лесно създаване на копия с различни конфигурации, като същевременно запазва производителността.
                     <br></br>
                     <strong>Пример: </strong>
                     <br></br>
@@ -409,7 +407,7 @@ $connectionPool->releaseConnection($connection);
                     да създаваме всеки персонаж от нулата, можем да клонираме съществуващ обект и да променим само
                     необходимите свойства.
                 </p>
-                <figure id="fig6">
+                <figure id="figure6">
                     <img src="images/Prototype_Pattern.png" class="uml-image" title="Примерна UML диаграма на Прототип"
                         alt="Примерна UML диаграма на Прототип" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 6. UML диаграма на <em>Прототип</em>.</figcaption>
@@ -501,7 +499,7 @@ class BeastCharacter implements CharacterPrototype
                     Искаме да изградим система за логистично управление, която трябва да поддържа множество видове
                     транспорт като камион, кораб и самолет.
                 </p>
-                <figure id="fig7">
+                <figure id="figure7">
                     <img src="images/Simple_Factory_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Опростена фабрика"
                         alt="Примерна UML диаграма на Опростена фабрика" loading="lazy" width="990" height="869">
@@ -578,10 +576,10 @@ class TransportFactory
                     производителността ще използваме кеширане на данните. За целта можем да създадем клас, който ще
                     кешира данните и ще предоставя глобален достъп до тях.
                 </p>
-                <figure id="fig8">
+                <figure id="figure8">
                     <img src="images/Singleton_Pattern.png" class="uml-image" title="Примерна UML диаграма на Сингълтън"
                         alt="Примерна UML диаграма на Сингълтън" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 7. UML диаграма на <em>Сингълтън</em>.</figcaption>
+                    <figcaption>Фигура 8. UML диаграма на <em>Сингълтън</em>.</figcaption>
                 </figure>
                 <figure id="code7">
                     <pre><code>&lt;?php
@@ -635,12 +633,13 @@ $cache3 = Cache::singleton();
                     <strong>Пример: </strong>
                     <br></br>
                     Искаме нашето приложение да има логване на грешки. Имаме различни видове логване във: <em>файл, база
-                    данни, конзола</em>.
+                        данни, конзола</em>.
                 </p>
-                <figure id="fig9">
-                    <img src="images/Static_Factory_Pattern.png" class="uml-image" title="Примерна UML диаграма на Статична фабрика"
+                <figure id="figure9">
+                    <img src="images/Static_Factory_Pattern.png" class="uml-image"
+                        title="Примерна UML диаграма на Статична фабрика"
                         alt="Примерна UML диаграма на Статична фабрика" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 8. UML диаграма на <em>Статична фабрика</em>.</figcaption>
+                    <figcaption>Фигура 9. UML диаграма на <em>Статична фабрика</em>.</figcaption>
                 </figure>
                 <figure id="code8">
                     <pre><code>&lt;?php
@@ -695,12 +694,64 @@ class LoggerFactory
                         Във фрагмента имаме интерфейса Logger, който дефинира метода log(). Имаме три класа, които
                         имплементират интерфейса: FileLogger, DatabaseLogger и ConsoleLogger. Класът LoggerFactory има
                         статичен метод createLogger(), който приема тип на логера и връща инстанция на съответния клас.
-                        Чрез този метод и без инстанция на фабриката можем да създаваме различни типове логери, без да знаем конкретните класове.
+                        Чрез този метод и без инстанция на фабриката можем да създаваме различни типове логери, без да
+                        знаем конкретните класове.
                     </p>
                 </figure>
             </article>
         </div>
     </main>
+    <footer>
+        <ul>
+            <li>
+                <h3>Фигури:</h3>
+                <ol id="figures-list">
+                    <li><a href="#figure1">Фиг. 1. UML диаграма на <em>Абстрактна фабрика</em></a></li>
+                    <li><a href="#figure2">Фиг. 2. UML диаграма на Горна част на "аутфит"</a></li>
+                    <li><a href="#figure3">Фиг. 3. UML диаграма на <em>Строител</em></a></li>
+                    <li><a href="#figure4">Фиг. 4. UML диаграма за <em>Метод фабрика</em></a></li>
+                    <li><a href="#figure5">Фиг. 5. UML диаграма на <em>Пул</em></a></li>
+                    <li><a href="#figure6">Фиг. 6. UML диаграма на <em>Прототип</em></a></li>
+                    <li><a href="#figure7">Фиг. 7. UML диаграма на <em>Опростена фабрика</em></a></li>
+                    <li><a href="#figure8">Фиг. 8. UML диаграма на <em>Сингълтън</em></a></li>
+                    <li><a href="#figure9">Фиг. 9. UML диаграма на <em>Статична фабрика</em></a></li>
+                </ol>
+            </li>
+            <li>
+                <h3>Код:</h3>
+                <ol id="codes-list">
+                    <li><a href="#code1">Код 1. Фрагмент от имплементация на <em>Абстрактна фабрика</em></a></li>
+                    <li><a href="#code2">Код 2. Фрагмент от имплементация на <em>Строител</em></a></li>
+                    <li><a href="#code3">Код 3. Фрагмент от имплементация на <em>Метод фабрика</em></a></li>
+                    <li><a href="#code4">Код 4. Фрагмент от имплементация на <em>Пул</em></a></li>
+                    <li><a href="#code5">Код 5. Фрагмент от имплементация на <em>Прототип</em></a></li>
+                    <li><a href="#code6">Код 6. Фрагмент от имплементация на <em>Опростена фабрика</em></a></li>
+                    <li><a href="#code7">Код 7. Фрагмент от имплементация на <em>Сингълтън</em></a></li>
+                    <li><a href="#code8">Код 8. Фрагмент от имплементация на <em>Статична фабрика</em></a></li>
+                </ol>
+            </li>
+            <li>
+                <h3>Литература:</h3>
+                <ol id="literature-list">
+                    <li>Dominik Liebler and contributors, <em> DesignPatternsPHP </em>, <a
+                            href="https://designpatternsphp.readthedocs.io/ca/latest/Creational/README.html">[https://designpatternsphp.readthedocs.io/ca/latest/Creational/README.html]</a>,
+                        Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
+                    <li>Refactoring.Guru, <em> Creational Design Patterns </em>, <a
+                            href="https://refactoring.guru/design-patterns/creational-patterns">[https://refactoring.guru/design-patterns/creational-patterns]</a>,
+                        Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
+                    <li>Sourcemaking.com, <em> Object Pool Design Pattern </em>, <a
+                            href="https://sourcemaking.com/design_patterns/object_pool">[https://sourcemaking.com/design_patterns/object_pool]</a>,
+                        Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
+                    <li>Max Zhuk, <em> Design Patterns in PHP 8: Simple factory </em>, <a
+                            href="https://dev.to/zhukmax/design-patterns-in-php-8-simple-factory-o0l">[https://dev.to/zhukmax/design-patterns-in-php-8-simple-factory-o0l]</a>,
+                        Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
+                    <li>Allan MacGregor, <em> Design Patterns in PHP: Singletons </em>, <a
+                            href="https://allanmacgregor.com/posts/design-patterns-php-singletons">[https://allanmacgregor.com/posts/design-patterns-php-singletons]</a>,
+                        Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
+                </ol>
+            </li>
+        </ul>
+    </footer>
 </body>
 
 </html>
