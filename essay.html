@@ -60,9 +60,9 @@
                     <figcaption>Фигура 1. UML диаграма на <em>Абстрактна фабрика</em>.</figcaption>
                 </figure>
                 <figure id="figure2">
-                    <img src="images/Top_Diagram.png" class="uml-image" title='Диаграма на горна част на "аутфит"'
-                        alt='Примерна UML диаграма на горначаст на "аутфит"' loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 2. UML диаграма на Горна част на "аутфит".</figcaption>
+                    <img src="images/Clothes_Tree.png" class="uml-image" title="Диаграма на горна част на дрехите"
+                        alt="Примерна UML диаграма на дрехите" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 2. UML диаграма на дрехите.</figcaption>
                 </figure>
                 <figure id="code1">
                     <pre><code>&lt;?php
@@ -77,7 +77,7 @@ interface ClothesFactory {
 
 class StreetwearFactory implements ClothesFactory {
     public function createTop(): Top {
-        return new StreetWearOversizedHoodie();
+        return new StreetwearOversizedHoodie();
     }
 
     public function createBottom(): Bottom {
@@ -89,44 +89,33 @@ class StreetwearFactory implements ClothesFactory {
     }
 }
 
-class StreetWearOversizedHoodie implements Top {
-    public function wear(): string {
+interface Top {
+    public function wearTop(): string;
+}
+
+interface Bottom {
+    public function wearBottom(): string;
+}
+
+interface Shoes {
+    public function wearShoes(): string;
+}
+
+class StreetwearOversizedHoodie implements Top {
+    public function wearTop(): string {
         return "Нося oversized hoodie.";
-    }
-
-    public function wash(): string {
-        return "Пера oversized hoodie.";
-    }
-
-    public function buy(): string {
-        return "Купувам oversized hoodie.";
     }
 }
 
 class CargoPants implements Bottom {
-    public function wear(): string {
+    public function wearBottom(): string {
         return "Обут с cargo pants.";
-    }
-    public function wash(): string {
-        return "Пера cargo pants.";
-    }
-
-    public function buy(): string {
-        return "Купувам cargo pants.";
     }
 }
 
 class Sneakers implements Shoes {
-    public function wear(): string {
+    public function wearShoes(): string {
         return "Обут с маратонки.";
-    }
-
-    public function wash(): string {
-        return "Пера маратонки.";
-    }
-
-    public function buy(): string {
-        return "Купувам маратонки.";
     }
 }
     
@@ -707,7 +696,7 @@ class LoggerFactory
                 <h3>Фигури:</h3>
                 <ol id="figures-list">
                     <li><a href="#figure1">Фиг. 1. UML диаграма на <em>Абстрактна фабрика</em></a></li>
-                    <li><a href="#figure2">Фиг. 2. UML диаграма на Горна част на "аутфит"</a></li>
+                    <li><a href="#figure2">Фиг. 2. UML диаграма на дрехите</a></li>
                     <li><a href="#figure3">Фиг. 3. UML диаграма на <em>Строител</em></a></li>
                     <li><a href="#figure4">Фиг. 4. UML диаграма за <em>Метод фабрика</em></a></li>
                     <li><a href="#figure5">Фиг. 5. UML диаграма на <em>Пул</em></a></li>
