@@ -1,0 +1,267 @@
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="Софтуерни шаблони за създаване в PHP. Реферат за курса по WEB технологии към ФМИ.">
+    <title>Софтуерни шаблони за създаване в PHP</title>
+    <link rel="icon" sizes="32x32" href="/images/php_tab_icon.png">
+    <link rel="stylesheet" href="/essay.css">
+    <meta name="theme-color" content="#add8e6">
+</head>
+
+<body>
+    <header>
+        <h1>Софтуерни шаблони за създаване в PHP</h1>
+    </header>
+    <main>
+        <nav id="page-nav" class="page-nav" data-state="open">
+            <ul class="nav-list">
+                <li><a href="#abstract-factory" onclick="closeMenuOnSmallScreen()">Абстрактна фабрика</a></li>
+                <li><a href="#builder" onclick="closeMenuOnSmallScreen()">Строител</a></li>
+                
+            </ul>
+        </nav>
+        <div class="content-container">
+            <article id="abstract-factory-pattern">
+                <h2> Абстрактна фабрика </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q
+                        cite="https://designpatternsphp.readthedocs.io/bg/latest/Creational/AbstractFactory/README.html#">За
+                        създаване на поредица от
+                        свързани или зависими обекти, без да се посочват техните конкретни класове. Обикновено
+                        създадените класове изпълняват един и същ интерфейс. Клиентът на абстрактната фабрика не се
+                        интересува от това как се създават тези обекти, той просто знае как вървят заедно.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да създадем приложение за мода и облекла. Имаме различни стилове на облекло като
+                    <em>Streetwear</em>,
+                    <em>Formal</em>, <em>Sport</em> и т.н. Всеки един от стиловете има различни атрибути и
+                    характеристики. Три са основните компонента на един "аутфит":
+                <ul>
+                    <li>Горна част</li>
+                    <li>Долна част</li>
+                    <li>Обувки</li>
+                </ul>
+                </p>
+                <figure id="fig1">
+                    <img src="images/Abstract_Factory_Pattern.png" class="uml-image"
+                        title="Примерна UML диаграма на Абстрактна фабрика"
+                        alt="Примерна UML диаграма на Абстрактна фабрика" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 1. UML диаграма на <em>Абстрактна фабрика</em>.</figcaption>
+                </figure>
+                <figure id="fig2">
+                    <img src="images/Top_Diagram.png" class="uml-image" title='Диаграма на горна част на "аутфит"'
+                        alt='Примерна UML диаграма на горначаст на "аутфит"' loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 2. UML диаграма на Горна част на "аутфит".</figcaption>
+                </figure>
+                <figure id="code6">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\AbstractFactory;
+    
+interface ClothesFactory {
+    public function createTop(): Top;
+    public function createBottom(): Bottom;
+    public function createShoes(): Shoes;
+}
+
+class StreetwearFactory implements ClothesFactory {
+    public function createTop(): Top {
+        return new StreetWearOversizedHoodie();
+    }
+
+    public function createBottom(): Bottom {
+        return new CargoPants();
+    }
+
+    public function createShoes(): Shoes {
+        return new Sneakers();
+    }
+}
+
+class StreetWearOversizedHoodie implements Top {
+    public function wear(): string {
+        return "Нося oversized hoodie.";
+    }
+
+    public function wash(): string {
+        return "Пера oversized hoodie.";
+    }
+
+    public function buy(): string {
+        return "Купувам oversized hoodie.";
+    }
+}
+
+class CargoPants implements Bottom {
+    public function wear(): string {
+        return "Обут с cargo pants.";
+    }
+    public function wash(): string {
+        return "Пера cargo pants.";
+    }
+
+    public function buy(): string {
+        return "Купувам cargo pants.";
+    }
+}
+
+class Sneakers implements Shoes {
+    public function wear(): string {
+        return "Обут с маратонки.";
+    }
+
+    public function wash(): string {
+        return "Пера маратонки.";
+    }
+
+    public function buy(): string {
+        return "Купувам маратонки.";
+    }
+}
+    
+    ?&gt;</code></pre>
+                    <figcaption>Код 1. Фрагмент от имплементация на <em>Абстрактна фабрика</em>.</figcaption>
+                    <p>
+                        Фрагмента показва как можем да имплементираме абстрактна фабрика за
+                        нашия случай. Имаме интерфейс ClothesFactory, който дефинира методите за
+                        създаване на горна част, долна част и обувки. След това имаме конкретна фабрика
+                        StreetwearFactory, която имплементира интерфейса и създава конкретни класове за всеки от
+                        компонентите на облеклото.
+                    </p>
+                </figure>
+            </article>
+            <article id="builder-pattern">
+                <h2> Строител </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://refactoring.guru/design-patterns/builder">За
+                        създаване на дизайн, който ви позволява да конструирате сложни обекти стъпка
+                        по стъпка. Шаблонът ви позволява да произвеждате различни типове и представяния на обект, като
+                        използвате един и същ строителен код.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да създадем приложение за рецепти. Имаме различни видове рецепти, които можем да създадем.
+                    Всяка една рецепта е сложна комбинация от съставки и действия.
+                </p>
+                <figure id="fig3">
+                    <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
+                        alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 1. UML диаграма на <em>Строител</em>.</figcaption>
+                </figure>
+                <figure id="code2">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\Builder;
+    
+abstract class Builder
+{
+    public function startRecipe()
+    public function addSalt() {}
+    public function addPork() {}
+    public function bake() {}
+    public function fry() {}
+    public function addWater() {}
+
+}
+
+class Director
+{
+    public function build(Builder $builder): void
+    {
+        $builder->startRecipe();
+        $builder->addSalt();
+        $builder->addPork();
+        $builder->bake();
+        $builder->fry();
+        $builder->addWater();
+    }
+}
+
+    
+    ?&gt;</code></pre>
+                    <figcaption>Код 2. Фрагмент от имплементация на <em>Строител</em>.</figcaption>
+                    <p>
+                        Фрагмента показва как можем да имплементираме строител за
+                        нашия случай. В този случай режисьорът е наясно как да изгради целия обект, докато строителят се
+                        грижи за създаването на отделните му части. Клиентският код не трябва да знае подробности за
+                        процеса на конструиране на обекта, а само кой конкретен строител да използва. От своя страна,
+                        режисьорът не се интересува от конкретния строител, а единствено от това, че той следва общ
+                        интерфейс и изпълнява необходимите стъпки, когато те бъдат заявени.
+                    </p>
+                </figure>
+            </article>
+            <article id="factory-method-pattern">
+                <h2> Метод фабрика </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://refactoring.guru/design-patterns/builder">За
+                        създаване на дизайн, който ви позволява да конструирате сложни обекти стъпка
+                        по стъпка. Шаблонът ви позволява да произвеждате различни типове и представяния на обект, като
+                        използвате един и същ строителен код.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да създадем приложение за рецепти. Имаме различни видове рецепти, които можем да създадем.
+                    Всяка една рецепта е сложна комбинация от съставки и действия.
+                </p>
+                <figure id="fig3">
+                    <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
+                        alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 1. UML диаграма на <em>Строител</em>.</figcaption>
+                </figure>
+                <figure id="code2">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\Builder;
+    
+abstract class Builder
+{
+    public function startRecipe()
+    public function addSalt() {}
+    public function addPork() {}
+    public function bake() {}
+    public function fry() {}
+    public function addWater() {}
+
+}
+
+class Director
+{
+    public function build(Builder $builder): void
+    {
+        $builder->startRecipe();
+        $builder->addSalt();
+        $builder->addPork();
+        $builder->bake();
+        $builder->fry();
+        $builder->addWater();
+    }
+}
+
+    
+    ?&gt;</code></pre>
+                    <figcaption>Код 2. Фрагмент от имплементация на <em>Строител</em>.</figcaption>
+                    <p>
+                        Фрагмента показва как можем да имплементираме строител за
+                        нашия случай. В този случай режисьорът е наясно как да изгради целия обект, докато строителят се
+                        грижи за създаването на отделните му части. Клиентският код не трябва да знае подробности за
+                        процеса на конструиране на обекта, а само кой конкретен строител да използва. От своя страна,
+                        режисьорът не се интересува от конкретния строител, а единствено от това, че той следва общ
+                        интерфейс и изпълнява необходимите стъпки, когато те бъдат заявени.
+                    </p>
+                </figure>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>
