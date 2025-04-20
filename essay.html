@@ -20,7 +20,11 @@
             <ul class="nav-list">
                 <li><a href="#abstract-factory" onclick="closeMenuOnSmallScreen()">Абстрактна фабрика</a></li>
                 <li><a href="#builder" onclick="closeMenuOnSmallScreen()">Строител</a></li>
-                
+                <li><a href="#factory-method" onclick="closeMenuOnSmallScreen()">Метод фабрика</a></li>
+                <li><a href="#pool" onclick="closeMenuOnSmallScreen()">Пул</a></li>
+                <li><a href="#prototype" onclick="closeMenuOnSmallScreen()">Прототип</a></li>
+                <li><a href="#simple-factory" onclick="closeMenuOnSmallScreen()">Опростена фабрика</a></li>
+                <li><a href="#singleton" onclick="closeMenuOnSmallScreen()">Сингълтън(Сек)</a></li>
             </ul>
         </nav>
         <div class="content-container">
@@ -59,7 +63,7 @@
                         alt='Примерна UML диаграма на горначаст на "аутфит"' loading="lazy" width="990" height="869">
                     <figcaption>Фигура 2. UML диаграма на Горна част на "аутфит".</figcaption>
                 </figure>
-                <figure id="code6">
+                <figure id="code1">
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\AbstractFactory;
@@ -154,7 +158,7 @@ class Sneakers implements Shoes {
                 <figure id="fig3">
                     <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
                         alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 1. UML диаграма на <em>Строител</em>.</figcaption>
+                    <figcaption>Фигура 3. UML диаграма на <em>Строител</em>.</figcaption>
                 </figure>
                 <figure id="code2">
                     <pre><code>&lt;?php
@@ -203,60 +207,415 @@ class Director
                 <h3> Приложимост </h3>
                 <p>
                     <q cite="https://refactoring.guru/design-patterns/builder">За
-                        създаване на дизайн, който ви позволява да конструирате сложни обекти стъпка
-                        по стъпка. Шаблонът ви позволява да произвеждате различни типове и представяния на обект, като
-                        използвате един и същ строителен код.
+                        за създаване на обекти чрез специален метод, вместо
+                        директно извикване на конструктора с new. Това позволява на подкласовете да заменят фабричния
+                        метод и да определят какъв тип обекти да се създават. Обектите, създадени от методa, се
+                        наричат продукти и обикновено споделят общ интерфейс или базов клас. Основното предимство на
+                        този подход е, че улеснява разширяването и модификацията на кода, без да се променя
+                        съществуващата логика. Подходът осигурява по-голяма гъвкавост и спазва принципа на
+                        отвореност/затвореност, като позволява добавянето на нови типове продукти, без да се нарушава
+                        съществуващата структура.
                     </q>
                     <br></br>
                     <strong>Пример: </strong>
                     <br></br>
-                    Искаме да създадем приложение за рецепти. Имаме различни видове рецепти, които можем да създадем.
-                    Всяка една рецепта е сложна комбинация от съставки и действия.
+                    Искаме да създадем приложение за изпращане на съобщения. Имаме различни видове съобщения, които
+                    можем да създадем.
+                    Например <em>имейли и SMS</em>.
                 </p>
-                <figure id="fig3">
-                    <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
-                        alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 1. UML диаграма на <em>Строител</em>.</figcaption>
+                <figure id="fig4">
+                    <img src="images/Factory_Method_Pattern.png" class="uml-image"
+                        title="Примерна UML диаграма на Строител" alt="Примерна UML диаграма на Строител" loading="lazy"
+                        width="990" height="869">
+                    <figcaption>Фигура 4. UML диаграма на <em>Метод фабрика</em>.</figcaption>
                 </figure>
-                <figure id="code2">
+                <figure id="code3">
                     <pre><code>&lt;?php
 
-namespace DesignPatterns\Creational\Builder;
+namespace DesignPatterns\Creational\FactoryMethod;
     
-abstract class Builder
-{
-    public function startRecipe()
-    public function addSalt() {}
-    public function addPork() {}
-    public function bake() {}
-    public function fry() {}
-    public function addWater() {}
-
+interface Message {
+    public function send(): string;
 }
 
-class Director
-{
-    public function build(Builder $builder): void
-    {
-        $builder->startRecipe();
-        $builder->addSalt();
-        $builder->addPork();
-        $builder->bake();
-        $builder->fry();
-        $builder->addWater();
+class EmailMessage implements Message {
+    public function send(): string {
+        return "Изпращам имейл.";
     }
 }
 
-    
+class SMSMessage implements Message {
+    public function send(): string {
+        return "Изпращам SMS.";
+    }
+}
+
+interface MessageCreator {
+    abstract public function createMessage(): Message;
+}
+
+class EmailMessageCreator extends MessageCreator {
+    public function createMessage(): Message {
+        return new EmailMessage();
+    }
+}
+
+class SMSMessageCreator extends MessageCreator {
+    public function createMessage(): Message {
+        return new SMSMessage();
+    }
+}
+
     ?&gt;</code></pre>
-                    <figcaption>Код 2. Фрагмент от имплементация на <em>Строител</em>.</figcaption>
+                    <figcaption>Код 3. Фрагмент от имплементация на <em>Метод фабрика</em>.</figcaption>
                     <p>
-                        Фрагмента показва как можем да имплементираме строител за
-                        нашия случай. В този случай режисьорът е наясно как да изгради целия обект, докато строителят се
-                        грижи за създаването на отделните му части. Клиентският код не трябва да знае подробности за
-                        процеса на конструиране на обекта, а само кой конкретен строител да използва. От своя страна,
-                        режисьорът не се интересува от конкретния строител, а единствено от това, че той следва общ
-                        интерфейс и изпълнява необходимите стъпки, когато те бъдат заявени.
+                        Фрагмента показва как можем да имплементираме <em>Метод Фабрика</em>. Kреационният метод е
+                        createMessage() на интерфейса
+                        MessageCreator. Чрез използването на този интерфейс, създаването на обектите се делегира на
+                        конкретните класове EmailMessageCreator и SMSMessageCreator.
+                    </p>
+                </figure>
+            </article>
+            <article id="pool-pattern">
+                <h2> Пул </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://sourcemaking.com/design_patterns/object_pool">За
+                        oбединяване на обекти, което може да предложи значително повишаване на производителността. Той е
+                        най-ефективен в ситуации, в които цената за инициализиране на екземпляр на клас е висока,
+                        скоростта на инстанциране на клас е висока и броят на инстанциранията, използвани във всеки един
+                        момент, е нисък.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Всяко едно приложение, което използва база данни, може да се възползва от пул. Например,
+                    <em>MySQL</em> и <em>PostgreSQL</em> предлагат пул от връзки към базата данни, тъй като създаването
+                    на тези връзки е "тежка" операция.
+                </p>
+                <figure id="fig5">
+                    <img src="images/Pool_Pattern.png" class="uml-image" title="Примерна UML диаграма на Пул"
+                        alt="Примерна UML диаграма на Пул" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 6. UML диаграма на <em>Пул</em>.</figcaption>
+                </figure>
+                <figure id="code4">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\Pool;
+class DatabaseConnection {
+    private $id;
+
+    public function __construct($id) {
+        $this->id = $id;
+        echo "Създадена е връзка с ID: {$this->id}\n";
+    }
+
+    public function query($sql) {
+        echo "Изпълняване на  заявка: {$sql} на връзка с ID: {$this->id}\n";
+    }
+}
+
+class ConnectionPool {
+    private $availableConnections = [];
+    private $usedConnections = [];
+    private $maxConnections;
+
+    public function __construct($maxConnections) {
+        $this->maxConnections = $maxConnections;
+    }
+
+    public function getConnection() : DatabaseConnection {
+        if (count($this->availableConnections) > 0) {
+            $connection = array_pop($this->availableConnections);
+            $this->usedConnections[] = $connection;
+            echo "Използване на съществуваща връзка.\n";
+            return $connection;
+        }
+
+        if (count($this->usedConnections) < $this->maxConnections) {
+            $connection = new DatabaseConnection(count($this->usedConnections) + 1);
+            $this->usedConnections[] = $connection;
+            return $connection;
+        }
+
+        throw new Exception("Няма налични връзки!");
+    }
+
+    public function releaseConnection($connection) {
+        $key = array_search($connection, $this->usedConnections, true);
+        if ($key !== false) {
+            unset($this->usedConnections[$key]);
+            $this->availableConnections[] = $connection;
+            echo "Връзката е върната в пула.\n";
+        }
+    }
+
+    public function addConnection(DatabaseConnection $connection) {
+        if (count($this->availableConnections) + count($this->usedConnections) < $this->maxConnections) {
+            $this->availableConnections[] = $connection;
+            echo "Добавена е нова връзка към пула.\n";
+        } else {
+            echo "Пулът е пълен. Не може да се добави нова връзка.\n";
+        }
+    }
+
+    public function removeConnection(DatabaseConnection $connection) {
+        $key = array_search($connection, $this->availableConnections, true);
+        if ($key !== false) {
+            unset($this->availableConnections[$key]);
+            echo "Връзката е премахната от пула.\n";
+            return;
+        }
+
+        $key = array_search($connection, $this->usedConnections, true);
+        if ($key !== false) {
+            unset($this->usedConnections[$key]);
+            echo "Връзката е премахната от пула.\n";
+        }
+    }
+}
+
+// Пример за използване на ConnectionPool
+$connection = $connectionPool->grtConnection();
+
+$connection->query('SELECT * FROM users');
+
+$connectionPool->releaseConnection($connection);
+
+    ?&gt;</code></pre>
+                    <figcaption>Код 4. Фрагмент от имплементация на <em>Пул</em>.</figcaption>
+                    <p>
+                        Фрагмента показва как можем да имплементираме <em>Пул</em>. Класът DatabaseConnection имитира
+                        връзка с база данни. Той има метод query(), който изпълнява SQL заявка, а
+                        ConnectionPool съхранява и управлява наличните и използваните връзки.
+                    </p>
+                </figure>
+            </article>
+            <article id="prototype-pattern">
+                <h2> Прототип </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://sourcemaking.com/design_patterns/object_pool">
+                        За създаване на нови обекти чрез клониране на съществуващи обекти вместо директно създаване чрез
+                        конструктор. Това е полезно, когато създаването на обект е скъпо или сложно. Шаблонът позволява
+                        лесно създаване на копия с различни конфигурации, като същевременно запазва производителността.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да създадем игра. В нея има множество персонажи с подобни характеристики, но с малки разлики.
+                    Вместо
+                    да създаваме всеки персонаж от нулата, можем да клонираме съществуващ обект и да променим само
+                    необходимите свойства.
+                </p>
+                <figure id="fig6">
+                    <img src="images/Prototype_Pattern.png" class="uml-image" title="Примерна UML диаграма на Прототип"
+                        alt="Примерна UML диаграма на Прототип" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 6. UML диаграма на <em>Прототип</em>.</figcaption>
+                </figure>
+                <figure id="code5">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\Prototype;
+
+interface CharacterPrototype
+{
+    public function __clone();
+}
+
+class HumanCharacter implements CharacterPrototype
+{
+    private string $name;
+    private int $health;
+    private int $strength;
+
+    public function __construct(string $name, int $health, int $strength)
+    {
+        $this->name = $name;
+        $this->health = $health;
+        $this->strength = $strength;
+    }
+
+    public function jump(): string
+    {
+        return "{$this->name} скача.";
+    }
+
+    public function __clone()
+    {
+        // Клониране на обекта
+    }
+}
+
+class BeastCharacter implements CharacterPrototype
+{
+    private string $name;
+    private string $kind;
+    private int $power;
+
+    public function __construct(string $name, string $kind, int $power)
+    {
+        $this->name = $name;
+        $this->kind = $kind;
+        $this->power = $power;
+    }
+
+    public function kill(): string
+    {
+        return "{$this->name} убива.";
+    }
+
+    public function __clone()
+    {
+        // Клониране на обекта
+    }
+}
+
+    ?&gt;</code></pre>
+                    <figcaption>Код 5. Фрагмент от имплементация на <em>Прототип</em>.</figcaption>
+                    <p>
+                        Фрагмента показва как можем да имплементираме <em>Прототип</em>. Класът HumanCharacter и
+                        BeastCharacter имплементират
+                        интерфейса CharacterPrototype и дефинират метода __clone(), който позволява клонирането на
+                        обектите спрямо логиката в тях.
+                    </p>
+                </figure>
+            </article>
+            <article id="simple-factory-pattern">
+                <h2> Проста фабрика </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://dev.to/zhukmax/design-patterns-in-php-8-simple-factory-o0l">
+                        За със създаването на обект без излагане на логиката на създаване на клиента и препращане към
+                        новосъздадения обект с помощта на общ интерфейс. Нарича се „проста фабрика“, защото е лесен за
+                        разбиране и прилагане.
+                        Основната идея зад шаблона "Опростена фабрика" е да се създават обекти, без да се налага да се
+                        указва
+                        точният клас на обекта, който ще бъде създаден.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да изградим система за логистично управление, която трябва да поддържа множество видове
+                    транспорт като камион, кораб и самолет.
+                </p>
+                <figure id="fig7">
+                    <img src="images/Simple_Factory_Pattern.png" class="uml-image"
+                        title="Примерна UML диаграма на Опростена фабрика"
+                        alt="Примерна UML диаграма на Опростена фабрика" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 7. UML диаграма на <em>Опростена фабрика</em>.</figcaption>
+                </figure>
+                <figure id="code6">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\SimpleFactory;
+
+interface Transport
+{
+    public function deliver();
+}
+
+class Truck implements Transport
+{
+    public function deliver()
+    {
+        return "Delivery by road in a box";
+    }
+}
+
+class Ship implements Transport
+{
+    public function deliver() {
+        return "Delivery by sea in a container";
+    }
+}
+
+class Plane implements Transport
+{
+    public function deliver() {
+        return "Delivery by air in a cargo";
+    }
+}
+
+class TransportFactory
+{
+    public function createTransport($type) : Transport
+    {
+        return match ($type) {
+            'truck' => new Truck(),
+            'ship' => new Ship(),
+            'plane' => new Plane(),
+            default => throw new Exception("Invalid transport type"),
+        };
+    }
+}
+
+    ?&gt;</code></pre>
+                    <figcaption>Код 6. Фрагмент от имплементация на <em>Опростена фабрика</em>.</figcaption>
+                    <p>
+                        Във фрагмента чрез TransportFactory можем да създаваме различни типове транспортни обекти, без
+                        да знаем конкретните класове. Това прави нашия код по-гъвкав и по-лесен за поддръжка.
+                    </p>
+                </figure>
+            </article>
+            <article id="simple-factory-pattern">
+                <h2> Сингълтън (Сек) </h2>
+                <h3> Приложимост </h3>
+                <p>
+                    <q cite="https://allanmacgregor.com/posts/design-patterns-php-singletons">
+                        За ограничаване на инстанцирането на клас до един обект, което може да бъде полезно, когато се
+                        изисква само един обект в цялата система. Сингълтоните са проектирани да гарантират, че има
+                        единична инстанция на клас и това е глобална точка на достъп за него, имаме глобален достъп и
+                        мързелива инициализация. Използва се за управление на ресурси, които не могат да бъдат
+                        инстанцирани многократно, като например пулове от връзки, кешове и т.н.
+                    </q>
+                    <br></br>
+                    <strong>Пример: </strong>
+                    <br></br>
+                    Искаме да създаден приложение, което ще използва множество заявки към външни API-та. За да подобрим
+                    производителността ще използваме кеширане на данните. За целта можем да създадем клас, който ще
+                    кешира данните и ще предоставя глобален достъп до тях.
+                </p>
+                <figure id="fig8">
+                    <img src="images/Singleton_Pattern.png" class="uml-image" title="Примерна UML диаграма на Сингълтън"
+                        alt="Примерна UML диаграма на Сингълтън" loading="lazy" width="990" height="869">
+                    <figcaption>Фигура 7. UML диаграма на <em>Сингълтън</em>.</figcaption>
+                </figure>
+                <figure id="code7">
+                    <pre><code>&lt;?php
+
+namespace DesignPatterns\Creational\Singleton;
+
+class Cache
+{
+    private static $instance;
+
+    private function __construct()
+    {
+    }
+ 
+    public static function singleton()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new __CLASS__;
+        }
+        return self::$instance;
+    }
+    
+}
+
+$cache1 = Cache::singleton();
+$cache2 = Cache::singleton();
+$cache3 = Cache::singleton();
+
+    ?&gt;</code></pre>
+                    <figcaption>Код 7. Фрагмент от имплементация на <em>Сингълтън</em>.</figcaption>
+                    <p>
+                        Във фрагмента имаме класа "Cache", който е сингълтън. Той има статичен метод singleton(), който
+                        проверява дали вече е създаден обект от класа. Ако не е, той създава нов, ако е, просто връща
+                        съществуващия. По този начин можем да имаме само един обект от класа "Cache". Също така сме
+                        направили неговия конструктор с ограничен достъп, за да предотвратим създаването на множество
+                        инстанции.
                     </p>
                 </figure>
             </article>
