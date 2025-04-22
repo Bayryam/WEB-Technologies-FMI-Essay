@@ -41,30 +41,30 @@
                         интересува от това как се създават тези обекти, той просто знае как вървят заедно.
                     </q>
                     <br></br>
-                    <strong>Пример: </strong>
-                    <br></br>
-                    Искаме да създадем приложение за мода и облекла. Имаме различни стилове на облекло като
-                    <em>Streetwear</em>,
-                    <em>Formal</em>, <em>Sport</em> и т.н. Всеки един от стиловете има различни атрибути и
-                    характеристики. Три са основните компонента на един "аутфит":
-                <ul>
-                    <li>Горна част</li>
-                    <li>Долна част</li>
-                    <li>Обувки</li>
-                </ul>
+                <h4>Пример: </h4>
+                <br></br>
+                Искаме да създадем приложение за мода и облекла. Имаме различни стилове на облекло като
+                <em>Streetwear</em>,
+                <em>Formal</em>, <em>Sport</em> и т.н. Всеки един от стиловете има различни атрибути и
+                характеристики. Три са основните компонента на един "аутфит": горна част, долна част и обувки.
                 </p>
                 <figure id="figure1">
+                    <div>
                     <img src="images/Abstract_Factory_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Абстрактна фабрика"
                         alt="Примерна UML диаграма на Абстрактна фабрика" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 1. UML диаграма на <em>Абстрактна фабрика</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="figure2">
-                    <img src="images/Clothes_Tree.png" class="uml-image" title="Диаграма на горна част на дрехите"
-                        alt="Примерна UML диаграма на дрехите" loading="lazy" width="990" height="869">
-                    <figcaption>Фигура 2. UML диаграма на дрехите.</figcaption>
+                    <div>
+                        <img src="images/Clothes_Tree.png" class="uml-image" title="Диаграма на дрехите"
+                            alt="Примерна UML диаграма на дрехите" loading="lazy" width="990" height="869">
+                        <figcaption>Фигура 2. UML диаграма на дрехите.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code1">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\AbstractFactory;
@@ -121,6 +121,7 @@ class Sneakers implements Shoes {
     
     ?&gt;</code></pre>
                     <figcaption>Код 1. Фрагмент от имплементация на <em>Абстрактна фабрика</em>.</figcaption>
+                    </div>
                     <p>
                         Фрагмента показва как можем да имплементираме абстрактна фабрика за
                         нашия случай. Имаме интерфейс ClothesFactory, който дефинира методите за
@@ -146,11 +147,14 @@ class Sneakers implements Shoes {
                     Всяка една рецепта е сложна комбинация от съставки и действия.
                 </p>
                 <figure id="figure3">
+                    <div>
                     <img src="images/Builder_Pattern.png" class="uml-image" title="Примерна UML диаграма на Строител"
                         alt="Примерна UML диаграма на Строител" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 3. UML диаграма на <em>Строител</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code2">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\Builder;
@@ -182,6 +186,7 @@ class Director
     
     ?&gt;</code></pre>
                     <figcaption>Код 2. Фрагмент от имплементация на <em>Строител</em>.</figcaption>
+                    </div>
                     <p>
                         Фрагмента показва как можем да имплементираме строител за
                         нашия случай. В този случай режисьорът е наясно как да изгради целия обект, докато строителят се
@@ -214,12 +219,15 @@ class Director
                     Например <em>имейли и SMS</em>.
                 </p>
                 <figure id="figure4">
+                    <div>
                     <img src="images/Factory_Method_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Строител" alt="Примерна UML диаграма на Строител" loading="lazy"
                         width="990" height="869">
                     <figcaption>Фигура 4. UML диаграма на <em>Метод фабрика</em>.</figcaption>
+                </div>
                 </figure>
                 <figure id="code3">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\FactoryMethod;
@@ -258,6 +266,7 @@ class SMSMessageCreator extends MessageCreator {
 
     ?&gt;</code></pre>
                     <figcaption>Код 3. Фрагмент от имплементация на <em>Метод фабрика</em>.</figcaption>
+                    </div>
                     <p>
                         Фрагмента показва как можем да имплементираме <em>Метод Фабрика</em>. Kреационният метод е
                         createMessage() на интерфейса
@@ -284,11 +293,14 @@ class SMSMessageCreator extends MessageCreator {
                     на тези връзки е "тежка" операция.
                 </p>
                 <figure id="figure5">
+                    <div>
                     <img src="images/Pool_Pattern.png" class="uml-image" title="Примерна UML диаграма на Пул"
                         alt="Примерна UML диаграма на Пул" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 5. UML диаграма на <em>Пул</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code4">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\Pool;
@@ -374,6 +386,7 @@ $connectionPool->releaseConnection($connection);
 
     ?&gt;</code></pre>
                     <figcaption>Код 4. Фрагмент от имплементация на <em>Пул</em>.</figcaption>
+                    </div>
                     <p>
                         Фрагмента показва как можем да имплементираме <em>Пул</em>. Класът DatabaseConnection имитира
                         връзка с база данни. Той има метод query(), който изпълнява SQL заявка, а
@@ -397,11 +410,14 @@ $connectionPool->releaseConnection($connection);
                     необходимите свойства.
                 </p>
                 <figure id="figure6">
+                    <div>
                     <img src="images/Prototype_Pattern.png" class="uml-image" title="Примерна UML диаграма на Прототип"
                         alt="Примерна UML диаграма на Прототип" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 6. UML диаграма на <em>Прототип</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code5">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\Prototype;
@@ -461,6 +477,7 @@ class BeastCharacter implements CharacterPrototype
 
     ?&gt;</code></pre>
                     <figcaption>Код 5. Фрагмент от имплементация на <em>Прототип</em>.</figcaption>
+                    </div>
                     <p>
                         Фрагмента показва как можем да имплементираме <em>Прототип</em>. Класът HumanCharacter и
                         BeastCharacter имплементират
@@ -475,7 +492,8 @@ class BeastCharacter implements CharacterPrototype
                 <p>
                     <q cite="https://dev.to/zhukmax/design-patterns-in-php-8-simple-factory-o0l">
                         За със създаването на обект без излагане на логиката на създаване на клиента и препращане към
-                        новосъздадения обект с помощта на общ интерфейс. Нарича се „Опростена фабрика“, защото е лесен за
+                        новосъздадения обект с помощта на общ интерфейс. Нарича се „Опростена фабрика“, защото е лесен
+                        за
                         разбиране и прилагане. Основната идея зад шаблона "Опростена фабрика" е да се създават обекти,
                         без да се налага да се указва точният клас на обекта, който ще бъде създаден. Тя се различава от
                         статичната фабрика, защото не е статична. Следователно можете да имате множество фабрики,
@@ -489,12 +507,15 @@ class BeastCharacter implements CharacterPrototype
                     транспорт като камион, кораб и самолет.
                 </p>
                 <figure id="figure7">
+                    <div>
                     <img src="images/Simple_Factory_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Опростена фабрика"
                         alt="Примерна UML диаграма на Опростена фабрика" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 7. UML диаграма на <em>Опростена фабрика</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code6">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\SimpleFactory;
@@ -541,6 +562,7 @@ class TransportFactory
 
     ?&gt;</code></pre>
                     <figcaption>Код 6. Фрагмент от имплементация на <em>Опростена фабрика</em>.</figcaption>
+                    </div>
                     <p>
                         Във фрагмента чрез TransportFactory можем да създаваме различни типове транспортни обекти, без
                         да знаем конкретните класове. Това прави нашия код по-гъвкав и по-лесен за поддръжка.
@@ -566,11 +588,14 @@ class TransportFactory
                     кешира данните и ще предоставя глобален достъп до тях.
                 </p>
                 <figure id="figure8">
+                    <div>
                     <img src="images/Singleton_Pattern.png" class="uml-image" title="Примерна UML диаграма на Сингълтън"
                         alt="Примерна UML диаграма на Сингълтън" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 8. UML диаграма на <em>Сингълтън</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code7">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\Singleton;
@@ -599,6 +624,7 @@ $cache3 = Cache::singleton();
 
     ?&gt;</code></pre>
                     <figcaption>Код 7. Фрагмент от имплементация на <em>Сингълтън</em>.</figcaption>
+                    </div>
                     <p>
                         Във фрагмента имаме класа "Cache", който е сингълтън. Той има статичен метод singleton(), който
                         проверява дали вече е създаден обект от класа. Ако не е, той създава нов, ако е, просто връща
@@ -625,12 +651,15 @@ $cache3 = Cache::singleton();
                         данни, конзола</em>.
                 </p>
                 <figure id="figure9">
+                    <div>
                     <img src="images/Static_Factory_Pattern.png" class="uml-image"
                         title="Примерна UML диаграма на Статична фабрика"
                         alt="Примерна UML диаграма на Статична фабрика" loading="lazy" width="990" height="869">
                     <figcaption>Фигура 9. UML диаграма на <em>Статична фабрика</em>.</figcaption>
+                    </div>
                 </figure>
                 <figure id="code8">
+                    <div>
                     <pre><code>&lt;?php
 
 namespace DesignPatterns\Creational\StaticFactory;
@@ -679,6 +708,7 @@ class LoggerFactory
 
     ?&gt;</code></pre>
                     <figcaption>Код 8. Фрагмент от имплементация на <em>Статична фабрика</em>.</figcaption>
+                    </div>
                     <p>
                         Във фрагмента имаме интерфейса Logger, който дефинира метода log(). Имаме три класа, които
                         имплементират интерфейса: FileLogger, DatabaseLogger и ConsoleLogger. Класът LoggerFactory има
@@ -691,9 +721,8 @@ class LoggerFactory
         </div>
     </main>
     <footer>
-        <ul>
-            <li>
-                <h3>Фигури:</h3>
+        <h2>Литература и визуални материали</h2>
+        <h3>Фигури:</h3>
                 <ol id="figures-list">
                     <li><a href="#figure1">Фиг. 1. UML диаграма на <em>Абстрактна фабрика</em></a></li>
                     <li><a href="#figure2">Фиг. 2. UML диаграма на дрехите</a></li>
@@ -705,8 +734,6 @@ class LoggerFactory
                     <li><a href="#figure8">Фиг. 8. UML диаграма на <em>Сингълтън</em></a></li>
                     <li><a href="#figure9">Фиг. 9. UML диаграма на <em>Статична фабрика</em></a></li>
                 </ol>
-            </li>
-            <li>
                 <h3>Код:</h3>
                 <ol id="codes-list">
                     <li><a href="#code1">Код 1. Фрагмент от имплементация на <em>Абстрактна фабрика</em></a></li>
@@ -718,8 +745,6 @@ class LoggerFactory
                     <li><a href="#code7">Код 7. Фрагмент от имплементация на <em>Сингълтън</em></a></li>
                     <li><a href="#code8">Код 8. Фрагмент от имплементация на <em>Статична фабрика</em></a></li>
                 </ol>
-            </li>
-            <li>
                 <h3>Литература:</h3>
                 <ol id="literature-list">
                     <li>Dominik Liebler and contributors, <em> DesignPatternsPHP </em>, <a
@@ -738,8 +763,7 @@ class LoggerFactory
                             href="https://allanmacgregor.com/posts/design-patterns-php-singletons">[https://allanmacgregor.com/posts/design-patterns-php-singletons]</a>,
                         Последна версия от: <time datetime="2025-04-21">21.04.2025</time></li>
                 </ol>
-            </li>
-        </ul>
+        
     </footer>
 </body>
 
